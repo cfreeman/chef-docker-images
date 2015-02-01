@@ -23,6 +23,24 @@ Now include the 'docker-images' cookbook as part of your run\_list for a node, a
 the latest version of the docker image, create a container (with in the example above port 80 mapped to port 80) and create
 the necessary init scripts to ensure your container spins up on boot.
 
+## Installation using Librarian-Chef
+
+[Librarian-Chef](https://github.com/applicationsonline/librarian#readme) is a bundler for your chef cookbooks. To install Librarian-Chef:
+
+	cd chef-repo
+	gem install librarian
+	librarian-chef init
+
+To use credentials:
+
+	echo "cookbook 'docker-images', git: 'git://github.com/cfreeman/chef-docker-images.git'" >> Cheffile
+
+## Recipes
+
+### default
+
+Pulls docker images and creates matching containers from metadata specified in node attributes
+
 
 ## License
 
