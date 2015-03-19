@@ -36,6 +36,7 @@ node['docker-images'].each do |i|
 	docker_image i['name']
 
 	docker_container i['name'] do
+		action :redeploy
 		detach true
 		port i['port']
 	end
