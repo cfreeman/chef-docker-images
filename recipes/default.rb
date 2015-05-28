@@ -38,6 +38,13 @@ node['docker-images'].each do |i|
 	docker_container i['name'] do
 		action :redeploy
 		detach true
-		port i['port']
+
+		unless i['port'].nil?
+			port i['port']
+		end
+
+		unless i['volumes'].nil?
+			volumes_from i['volumes']
+		end
 	end
 end
