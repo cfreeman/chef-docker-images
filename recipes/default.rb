@@ -32,7 +32,7 @@ docker_service_manager_systemd 'default' do
 end
 
 # Log into docker hub.
-docker_registry ' https://index.docker.io/v1/' do
+docker_registry 'https://hub.docker.com/' do
   username node['docker_username']
   password node['docker_password']
   email node['docker_email']
