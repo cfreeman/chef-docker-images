@@ -23,7 +23,7 @@
 # THE SOFTWARE.
 #
 
-docker_service 'default' do
+docker_service_manager_systemd 'default' do
 	action [:create, :start]
 end
 
