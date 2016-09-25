@@ -24,7 +24,7 @@
 #
 
 docker_service 'default' do
-	action[:create, :start]
+	action [:create, :start]
 end
 
 # Log into docker hub.
