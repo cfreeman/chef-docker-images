@@ -23,7 +23,9 @@
 # THE SOFTWARE.
 #
 
-include_recipe 'docker'
+docker_service 'default' do
+	action[:create, :start]
+end
 
 # Log into docker hub.
 docker_registry ' https://index.docker.io/v1/' do
@@ -33,7 +35,9 @@ docker_registry ' https://index.docker.io/v1/' do
 end
 
 node['docker-images'].each do |i|
-	docker_image i['name']
+	docker_image i['name'] do
+		action :pull
+	end
 
 	docker_container i['name'] do
 		action :redeploy

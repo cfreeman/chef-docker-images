@@ -8,3 +8,4 @@ version          '0.3.0'
 
 supports		 'ubuntu'
 recipe			 'docker-images', 'Pulls docker images and creates matching containers from metadata specified in node attributes'
+depends			 'docker', '~> 2.0'
