@@ -40,12 +40,17 @@ end
 
 node['docker-images'].each do |i|
 	docker_image i['name'] do
+		tag 'latest'
 		action :pull
+		notifies :redeploy, 'docker_container['+i['name']+']'
 	end
 
 	docker_container i['name'] do
-		action :redeploy
-		detach true
+		#action :redeploy
+		#detach true
+
+		repo i['name']
+		tag 'latest'
 
 		unless i['port'].nil?
 			port i['port']
