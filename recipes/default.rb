@@ -23,8 +23,12 @@
 # THE SOFTWARE.
 #
 
+docker_installation 'default' do
+  action :create
+end
+
 docker_service_manager_systemd 'default' do
-	action [:create, :start]
+	action :start
 end
 
 # Log into docker hub.
