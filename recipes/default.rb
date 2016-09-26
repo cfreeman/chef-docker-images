@@ -46,6 +46,7 @@ node['docker-images'].each do |i|
 	end
 
 	docker_container i['container-name'] do
+		restart_policy :always
 		#action :redeploy
 		#detach true
 
