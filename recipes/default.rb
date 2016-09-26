@@ -42,10 +42,10 @@ node['docker-images'].each do |i|
 	docker_image i['name'] do
 		tag 'latest'
 		action :pull
-		notifies :redeploy, 'docker_container['+i['name']+']'
+		notifies :redeploy, 'docker_container['+i['container-name']+']'
 	end
 
-	docker_container i['name'] do
+	docker_container i['container-name'] do
 		#action :redeploy
 		#detach true
 

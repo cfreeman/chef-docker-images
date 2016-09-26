@@ -4,7 +4,7 @@ maintainer_email 'YOUR_EMAIL'
 license          'The MIT License'
 description      'Installs/Configures docker-image'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.3.6'
+version          '0.3.7'
 
 supports		 'ubuntu'
 recipe			 'docker-images', 'Pulls docker images and creates matching containers from metadata specified in node attributes'
