@@ -42,13 +42,19 @@ node['docker-images'].each do |i|
 	docker_image i['name'] do
 		tag 'latest'
 		action :pull
-		notifies :redeploy, 'docker_container['+i['container-name']+']'
+
+		if i['volume']
+			notifies :create, 'docker_container['+i['container-name']+']'
+		else
+			notifies :redeploy, 'docker_container['+i['container-name']+']'
+		end
+
 	end
 
 	docker_container i['container-name'] do
-		#restart_policy 'always'
-		#action :redeploy
-		#detach true
+		unless i['volume']
+			restart_policy 'always'
+		end
 
 		repo i['name']
 		tag 'latest'
