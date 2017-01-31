@@ -48,7 +48,6 @@ node['docker-images'].each do |i|
 		else
 			notifies :redeploy, 'docker_container['+i['container-name']+']'
 		end
-
 	end
 
 	docker_container i['container-name'] do
@@ -60,7 +59,13 @@ node['docker-images'].each do |i|
 		tag 'latest'
 
 		unless i['port'].nil?
-			port i['port']
+			i['port'].each do |p|
+				port p
+			end
+		end
+
+		unless i['sys_volume'].nil?
+			volumes i['sys_volume']
 		end
 
 		unless i['volumes'].nil?
