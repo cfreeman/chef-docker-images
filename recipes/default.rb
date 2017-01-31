@@ -59,7 +59,7 @@ node['docker-images'].each do |i|
 		tag 'latest'
 
 		unless i['port'].nil?
-			port p
+			port i['port']
 		end
 
 		unless i['sys_volume'].nil?
