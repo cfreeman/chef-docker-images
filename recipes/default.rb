@@ -53,6 +53,7 @@ node['docker-images'].each do |i|
 	docker_container i['container-name'] do
 		unless i['volume']
 			restart_policy 'always'
+			kill_after 10
 		end
 
 		repo i['name']
