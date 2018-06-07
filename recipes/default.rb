@@ -27,6 +27,10 @@ docker_installation 'default' do
   action :create
 end
 
+package "docker-compose" do
+  action :install
+end
+
 docker_service_manager_systemd 'default' do
 	action :start
 end
